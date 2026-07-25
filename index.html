@@ -278,10 +278,10 @@ async function playFallback(card){
 
     playing = false;
 }
-
+    
 function playWav(card){
 
-    return new Promise((resolve,reject)=>{
+    return new Promise(async (resolve,reject)=>{
 
         if(!card.sound){
 
@@ -290,11 +290,30 @@ function playWav(card){
 
         }
 
+        try{
+
+            const response =
+                await fetch(card.sound);
+
+            if(!response.ok){
+
+                reject("File not found");
+                return;
+
+            }
+
+        }catch(err){
+
+            reject(err);
+            return;
+
+        }
+
         audio = new Audio(card.sound);
 
-        audio.onended = ()=>resolve();
+        audio.onended = resolve;
 
-        audio.onerror = ()=>reject();
+        audio.onerror = reject;
 
         audio.play().catch(reject);
 
