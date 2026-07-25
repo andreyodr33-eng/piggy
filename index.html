@@ -283,6 +283,13 @@ function playWav(card){
 
     return new Promise((resolve,reject)=>{
 
+        if(!card.sound){
+
+            reject("No sound file");
+            return;
+
+        }
+
         audio = new Audio(card.sound);
 
         audio.onended = ()=>resolve();
