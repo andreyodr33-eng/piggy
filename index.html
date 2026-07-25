@@ -320,27 +320,14 @@ async function playCard(){
     }
 
 }
-document.body.addEventListener("touchstart",()=>{
+document.body.addEventListener("pointerup",(e)=>{
 
-    const msg =
-        new SpeechSynthesisUtterance("apple");
+    if(e.target === nextBtn)
+        return;
 
-    msg.onstart = ()=>{
-        alert("START");
-    };
-
-    msg.onend = ()=>{
-        alert("END");
-    };
-
-    msg.onerror = (e)=>{
-        alert("ERROR: " + e.error);
-    };
-
-    speechSynthesis.speak(msg);
+    playCard();
 
 });
-
 nextBtn.addEventListener("click",(e)=>{
 
     e.stopPropagation();
