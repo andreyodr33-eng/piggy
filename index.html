@@ -322,14 +322,21 @@ async function playCard(){
 }
 document.body.addEventListener("touchstart",()=>{
 
-    const voices = speechSynthesis.getVoices();
-
     const msg =
         new SpeechSynthesisUtterance("apple");
 
-    msg.voice = voices[0];
+    msg.onstart = ()=>{
+        alert("START");
+    };
 
-    speechSynthesis.cancel();
+    msg.onend = ()=>{
+        alert("END");
+    };
+
+    msg.onerror = (e)=>{
+        alert("ERROR: " + e.error);
+    };
+
     speechSynthesis.speak(msg);
 
 });
