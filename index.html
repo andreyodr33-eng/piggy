@@ -147,7 +147,7 @@ const cards = [
 {
     letterImage:"letters/B.png",
     image:"icons/icon-B.png",
-    sound:"sounds/B.wav",
+    // sound:"sounds/B.wav",
 
     phonics:"b",
     word: "banana"
@@ -283,13 +283,6 @@ function playWav(card){
 
     return new Promise((resolve,reject)=>{
 
-        if(!card.sound){
-
-            reject("No sound file");
-            return;
-
-        }
-
         audio = new Audio(card.sound);
 
         audio.onended = ()=>resolve();
@@ -301,7 +294,6 @@ function playWav(card){
     });
 
 }
-
 async function playCard(){
 
     if(playing) return;
