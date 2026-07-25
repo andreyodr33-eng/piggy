@@ -325,13 +325,12 @@ document.body.addEventListener("touchstart",()=>{
     const msg =
         new SpeechSynthesisUtterance("apple");
 
-    msg.lang = "en-GB";
+    msg.volume = 1;
+    msg.rate = 1;
+    msg.pitch = 1;
 
+    speechSynthesis.cancel();
     speechSynthesis.speak(msg);
-
-    alert(
-        speechSynthesis.getVoices().length
-    );
 
 });
 
