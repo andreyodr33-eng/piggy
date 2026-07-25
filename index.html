@@ -322,7 +322,16 @@ async function playCard(){
 }
 document.body.addEventListener("touchstart",()=>{
 
-    alert("touch");
+    const msg =
+        new SpeechSynthesisUtterance("apple");
+
+    msg.lang = "en-GB";
+
+    speechSynthesis.speak(msg);
+
+    alert(
+        speechSynthesis.getVoices().length
+    );
 
 });
 
