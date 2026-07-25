@@ -3,8 +3,8 @@
   "short_name": "piggy",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#f5f5f5",
-  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "theme_color": "#f5f5f5",
   "icons": [
       {
       "src": "icons/icon-32.png",
