@@ -320,13 +320,11 @@ async function playCard(){
     }
 
 }
+document.body.addEventListener("touchstart",()=>{
 
-document.body.addEventListener("touchstart",(e)=>{
-
-    if(e.target === nextBtn)
-        return;
-
-    playCard();
+    speechSynthesis.speak(
+        new SpeechSynthesisUtterance("apple")
+    );
 
 });
 
