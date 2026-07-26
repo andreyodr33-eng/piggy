@@ -308,40 +308,21 @@ function speakText(text){
 
     return new Promise(resolve=>{
 
-        const utterance =
-            new SpeechSynthesisUtterance(text);
+        const utter =
+        new SpeechSynthesisUtterance(text);
 
-        utterance.lang = "en-US";
-        utterance.rate = 0.8;
+        utter.lang = "en-GB";
+        utter.rate = 0.8;
 
-        const voices =
-            speechSynthesis.getVoices();
+        utter.onend = ()=>resolve();
 
-        const englishVoice =
-            voices.find(v =>
-                v.lang.includes("en")
-            );
-
-        if(englishVoice){
-
-            utterance.voice =
-                englishVoice;
-
-        }
-
-        utterance.onend =
-            ()=>resolve();
-
-        utterance.onerror =
-            ()=>resolve();
-
-        speechSynthesis.speak(
-            utterance
-        );
+        speechSynthesis.speak(utter);
 
     });
 
 }
+
+        
 function speakFallback(card){
   return new Promise(resolve=>{
     const sound1 =
