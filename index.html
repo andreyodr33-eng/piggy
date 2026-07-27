@@ -458,19 +458,11 @@ async function playFallback(card){
 
     playing = false;
 }
-    
-function playWav(card){
+function playWav(file){
 
     return new Promise((resolve,reject)=>{
 
-        if(!card.sound){
-
-            reject("No sound file");
-            return;
-
-        }
-
-        audio = new Audio(card.sound);
+        audio = new Audio(file);
 
         audio.onended = ()=>resolve();
 
@@ -480,7 +472,7 @@ function playWav(card){
 
     });
 
-}
+}    
 async function playCard(){
 
     if(playing) return;
