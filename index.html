@@ -505,17 +505,16 @@ async function playCard(){
     }
 
 }
-document.body.addEventListener("pointerup",(e)=>{
-   console.log(e.target);
-    if(e.target === nextBtn)
-        return;
+letterImage.addEventListener(
+    "pointerup",
+    playCard
+);
 
-    playCard();
-
-});
+iconImage.addEventListener(
+    "pointerup",
+    playCard
+);
 nextBtn.addEventListener("click",(e)=>{
-
-    e.stopPropagation();
 
     current++;
 
@@ -530,8 +529,6 @@ nextBtn.addEventListener("click",(e)=>{
     loadCard();
 
 });
-
-loadCard();
 //ЗАСТАВКА    
 window.addEventListener(
     "load",
