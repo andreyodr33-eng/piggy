@@ -468,7 +468,8 @@ async function playCard(){
             await playWav(card.phonics);
 
             await playWav(card.phonics);
-
+            audio = null;
+            await speakText(card.word);
         }catch(err){
 
             console.log(err);
