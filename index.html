@@ -474,7 +474,7 @@ function playWav(file){
 
 }    
 async function playCard(){
-
+   console.log("playCard");
     if(playing) return;
 
     playing = true;
@@ -483,21 +483,30 @@ async function playCard(){
 
     const card = cards[current];
 
-    try{
+    if(card.phonics){
 
-        await playWav(card);
+        try{
 
-        showNextButton();
+            await playWav(card.phonics);
 
-        playing = false;
+            await playWav(card.phonics);
 
-    }catch(err){
+        }catch(err){
 
-        await playFallback(card);
+            console.log(err);
+
+        }
 
     }
 
+    await speakText(card.word);
+
+    showNextButton();
+
+    playing = false;
 }
+
+
 letterImage.addEventListener(
     "pointerup",
     playCard
