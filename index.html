@@ -349,7 +349,7 @@ function showNextButton(){
 
     nextBtn.classList.add("show");
 }
-
+    
 function speakText(text){
 
     return new Promise(resolve=>{
@@ -360,13 +360,25 @@ function speakText(text){
         utter.lang = "en-GB";
         utter.rate = 0.8;
 
-        utter.onend = ()=>resolve();
+        let finished = false;
 
-        utter.onerror = ()=>resolve();
+        const done = ()=>{
+
+            if(finished) return;
+
+            finished = true;
+
+            resolve();
+
+        };
+
+        utter.onend = done;
+
+        utter.onerror = done;
 
         speechSynthesis.speak(utter);
 
-        setTimeout(resolve,3000);
+        setTimeout(done,3000);
 
     });
 
