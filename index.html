@@ -441,7 +441,7 @@ async function playFallback(card){
 function playWav(file){
 
     return new Promise((resolve,reject)=>{
-        const audio = new Audio(file);
+       // const audio = new Audio(file);
         audio = new Audio(file);
 
         audio.onended = ()=>resolve();
@@ -468,6 +468,12 @@ async function playCard(){
         try{
 
             await playWav(card.phonics);
+            await new Promise(resolve=>setTimeout(resolve,100));
+        }
+        if(card.word){
+            await playWav(card.word);
+        }
+    }
              speechSynthesis.cancel();
            // await playWav(card.phonics);
             // await speakText(card.word);
