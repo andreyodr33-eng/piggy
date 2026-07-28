@@ -194,13 +194,13 @@ const cards = [
 {
     letterImage:"letters/A.png",
     image:"icons/icon-A.png",
-    //phonics:"sounds/A.wav.m4a",
+    phonics:"sounds/A.wav.m4a",
     word: "apple"
 },
 {
     letterImage:"letters/B.png",
     image:"icons/icon-B.png",
-    phonics:"sounds/A.wav.m4a",
+    //phonics:"sounds/B.wav.m4a",
     word: "banana"
 },
 {
@@ -441,7 +441,7 @@ async function playFallback(card){
 function playWav(file){
 
     return new Promise((resolve,reject)=>{
-
+        const audio = new Audio(file);
         audio = new Audio(file);
 
         audio.onended = ()=>resolve();
