@@ -466,11 +466,7 @@ async function playCard(){
     const card = cards[current];
 
     try{
-         if(card.word){
-
-            await speakText(card.word);
-
-        }
+         
         if(card.phonics){
 
             await playWav(card.phonics);
@@ -482,7 +478,11 @@ async function playCard(){
             await playWav(card.phonics);
 
         }
+          if(card.word){
 
+              await speakText(card.word);
+
+        }
        
 
     }catch(err){
