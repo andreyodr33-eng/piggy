@@ -465,7 +465,7 @@ async function playCard(){
 
     if(card.phonics){
 
-       // try{
+        try{
 
             await playWav(card.phonics);
             await new Promise(resolve=>setTimeout(resolve,100));
@@ -475,10 +475,10 @@ async function playCard(){
         }
     }
              speechSynthesis.cancel();
-           // await playWav(card.phonics);
-            // await speakText(card.word);
+            await playWav(card.phonics);
             
-        catch(err){
+            
+    }catch(err){
 
             console.log(err);
 
