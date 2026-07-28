@@ -470,7 +470,7 @@ async function playCard(){
             await playWav(card.phonics);
             setTimeout(()=>{
                 speakText(card.word);
-            },500);
+            },1000);
             showNextButton();
             playing = false;
             await speakText(card.word);
