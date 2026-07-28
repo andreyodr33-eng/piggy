@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>English Sounds & Words</title>
-<link rel="manifest" href="manifest.json" />      
+<link rel="manifest" href="manifest.json" />
 <link
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
 rel="stylesheet">
@@ -85,75 +85,13 @@ body{
 
     z-index:10;
 }
-.next-btn{
 
-    border:none;
-    background:none;
-    padding:0;
-
-}
-
-.next-btn img{
-
-    width:80px;
-    height:80px;
-
-}
- #splash{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    background:white;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    z-index:99999;
-
-}
-
-#splash img{
-
-    width:120px;
-    height:120px;
-
-}
-
-#splash h2{
-
-    margin-top:15px;
-
-    color:#1976d2;
-
-} 
-   
 
 </style>
 
 </head>
 <body>
-<div id="splash">
 
-    <img
-        src="icons/icon-192.png"
-        alt="Logo">
-
-    <h2>
-     English Sounds & Words
-    </h2>
-
-</div>
 <div class="main-screen">
 
     <div class="card shadow card-area">
@@ -178,15 +116,19 @@ body{
 
             <img id="iconImage">
 
-     </div>
-        <button id="nextBtn" class="next-btn">
+        </div>
 
-        <img src="icons/next.png">
+        <button
+            id="nextBtn"
+            class="btn btn-primary next-btn">
+
+            ▶
 
         </button>
 
-         </div>
-  </div>
+    </div>
+
+</div>
 <script>
 
 const cards = [
@@ -195,104 +137,20 @@ const cards = [
     letterImage:"letters/A.png",
     image:"icons/icon-A.png",
     phonics:"sounds/A.wav.m4a",
+
     word: "apple"
+
+   
 },
+
 {
     letterImage:"letters/B.png",
     image:"icons/icon-B.png",
     // phonics:"sounds/B.wav",
+
     word: "banana"
-},
-{
-    letterImage:"letters/C.png",
-    image:"icons/icon-C.png",
-    //phonics:"sounds/C.wav",
-     word: "cat"
-},    
-{
-    letterImage:"letters/D.png",
-    image:"icons/icon-D.png",
-    //phonics:"sounds/D.wav",
-     word: "dog"
-},
-{
-    letterImage:"letters/E.png",
-    image:"icons/icon-E.png",
-    // phonics:"sounds/E.wav",
-    word: "elephant"
-},
-{
-    letterImage:"letters/F.png",
-    image:"icons/icon-F.png",
-    //phonics:"sounds/F.wav",
-    word: "fish"
-},
-{
-    letterImage:"letters/G.png",
-    image:"icons/icon-G.png",
-    //phonics:"sounds/G.wav",
-    word: "grapes"
-},
-{
-    letterImage:"letters/H.png",
-    image:"icons/icon-H.png",
-    // phonics:"sounds/H.wav",
-    word: "house"
-},    
-{
-    letterImage:"letters/I.png",
-    image:"icons/icon-I.png",
-    // phonics:"sounds/I.wav",
-    word: "ice cream"
-},
-{    
- letterImage:"letters/J.png",
-    image:"icons/icon-J.png",
-    // phonics:"sounds/J.wav",
-  word: "juice"
-},
-{
- letterImage:"letters/K.png",
-    image:"icons/icon-K.png",
-    // phonics:"sounds/K.wav",
-   word: "kite"
-}, 
-{
- letterImage:"letters/L.png",
-    image:"icons/icon-L.png",
-    // phonics:"sounds/L.wav",
-    word: "lion"
-},
-{
- letterImage:"letters/M.png",
-    image:"icons/icon-M.png",
-    // phonics:"sounds/M.wav",
-   word: "monkey"
-},        
-{
-    letterImage:"letters/N.png",
-    image:"icons/icon-N.png",
-    // phonics:"sounds/N.wav",
-    word: "nest"
-},
-{
-    letterImage:"letters/O.png",
-    image:"icons/icon-O.png",
-    // phonics:"sounds/O.wav",
-    word: "orange"
-},
-{
-    letterImage:"letters/P.png",
-    image:"icons/icon-P.png",
-    // phonics:"sounds/P.wav",
-    word: "penguin"
-},              
-{
-    letterImage:"letters/Q.png",
-    image:"icons/icon-Q.png",
-    // phonics:"sounds/Q.wav",
-    word: "queen"
-}              
+}
+
 ];
 
 let current =
@@ -349,42 +207,24 @@ function showNextButton(){
 
     nextBtn.classList.add("show");
 }
-    
+
 function speakText(text){
 
     return new Promise(resolve=>{
 
         const utter =
-            new SpeechSynthesisUtterance(text);
+        new SpeechSynthesisUtterance(text);
 
         utter.lang = "en-GB";
         utter.rate = 0.8;
 
-        let finished = false;
-
-        const done = ()=>{
-
-            if(finished) return;
-
-            finished = true;
-
-            resolve();
-
-        };
-
-        utter.onend = done;
-
-        utter.onerror = done;
+        utter.onend = ()=>resolve();
 
         speechSynthesis.speak(utter);
-
-        setTimeout(done,3000);
 
     });
 
 }
-
-        
 function speakFallback(card){
   return new Promise(resolve=>{
     const sound1 =
@@ -436,6 +276,7 @@ async function playFallback(card){
 
     playing = false;
 }
+
 function playWav(file){
 
     return new Promise((resolve,reject)=>{
@@ -450,7 +291,8 @@ function playWav(file){
 
     });
 
-}    
+}
+
 async function playCard(){
    
     if(playing) return;
@@ -468,8 +310,7 @@ async function playCard(){
             await playWav(card.phonics);
 
             await playWav(card.phonics);
-            audio = null;
-            await speakText(card.word);
+
         }catch(err){
 
             console.log(err);
@@ -485,17 +326,18 @@ async function playCard(){
     playing = false;
 }
 
+document.body.addEventListener("pointerup",(e)=>{
 
-letterImage.addEventListener(
-    "pointerup",
-    playCard
-);
+    if(e.target === nextBtn)
+        return;
 
-iconImage.addEventListener(
-    "pointerup",
-    playCard
-);
+    playCard();
+
+});
+
 nextBtn.addEventListener("click",(e)=>{
+
+    e.stopPropagation();
 
     current++;
 
@@ -509,33 +351,10 @@ nextBtn.addEventListener("click",(e)=>{
 
     loadCard();
 
-    
 });
-loadCard();  
-//ЗАСТАВКА    
-window.addEventListener(
-    "load",
-    ()=>{
 
-        setTimeout(
-            ()=>{
+loadCard();
 
-                document
-                    .getElementById(
-                        "splash"
-                    )
-                    .style.display =
-                    "none";
-
-            },
-
-            1000
-
-        );
-
-    }
-);
-     
 </script>
 
 
