@@ -454,7 +454,17 @@ function playWav(file){
 
 }    
 async function playCard(){
+document.addEventListener(
+    "pointerup",
+    ()=>{
+        const u =
+            new SpeechSynthesisUtterance("");
 
+        speechSynthesis.speak(u);
+
+    },
+    { once:true }
+);
 
 
     if(playing) return;
