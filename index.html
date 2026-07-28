@@ -351,7 +351,7 @@ function showNextButton(){
 }
     
 function speakText(text){
-    speechSynthesis.cancel();
+    console.log("WORD:", text);
     return new Promise(resolve=>{
 
         const utter =
@@ -468,11 +468,7 @@ async function playCard(){
             await playWav(card.phonics);
 
             await playWav(card.phonics);
-            setTimeout(()=>{
-                speakText(card.word);
-            },1000);
-            showNextButton();
-            playing = false;
+            
             await speakText(card.word);
         }catch(err){
 
