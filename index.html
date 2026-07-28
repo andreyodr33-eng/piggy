@@ -357,7 +357,7 @@ function speakText(text){
         const utter =
             new SpeechSynthesisUtterance(text);
 
-        utter.lang = "en-GB";
+        utter.lang = "en-US";
         utter.rate = 0.8;
 
         let finished = false;
@@ -390,7 +390,7 @@ function speakFallback(card){
     const sound1 =
         new SpeechSynthesisUtterance(card.phonics);
 
-    sound1.lang = "en-GB";
+    sound1.lang = "en-US";
 
     sound1.onend = ()=>{
 
@@ -399,7 +399,7 @@ function speakFallback(card){
             const sound2 =
                 new SpeechSynthesisUtterance(card.phonics);
 
-            sound2.lang = "en-GB";
+            sound2.lang = "en-US";
 
             sound2.onend = ()=>{
 
@@ -408,7 +408,7 @@ function speakFallback(card){
                     const word =
                         new SpeechSynthesisUtterance(card.word);
 
-                    word.lang = "en-GB";
+                    word.lang = "en-US";
                     word.onend = ()=>{
                         resolve();
                    };
