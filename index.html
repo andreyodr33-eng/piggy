@@ -200,7 +200,7 @@ const cards = [
 {
     letterImage:"letters/B.png",
     image:"icons/icon-B.png",
-    phonics:"sounds/A.wav.m4a",
+    //phonics:"sounds/B.wav.m4a",
     word: "banana"
 },
 {
@@ -472,7 +472,7 @@ async function playCard(){
             await playWav(card.phonics);
 
             await new Promise(resolve =>
-                setTimeout(resolve, 300)
+                setTimeout(resolve, 100)
             );
 
             await playWav(card.phonics);
