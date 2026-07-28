@@ -461,7 +461,7 @@ async function playCard(){
         }
 
     }
-
+    speechSynthesis.cancel();
     await speakText(card.word);
 
     showNextButton();
