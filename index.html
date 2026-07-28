@@ -454,7 +454,9 @@ function playWav(file){
 
 }    
 async function playCard(){
-   console.log("PLAYCARD");
+
+    console.log("PLAYCARD");
+
     if(playing) return;
 
     playing = true;
@@ -463,35 +465,38 @@ async function playCard(){
 
     const card = cards[current];
 
-    if(card.phonics){
+    try{
 
-        try{
+        if(card.phonics){
 
             await playWav(card.phonics);
-            await new Promise(resolve=>setTimeout(resolve,100));
+
+            await new Promise(resolve =>
+                setTimeout(resolve, 100)
+            );
+
+            await playWav(card.phonics);
+
         }
+
         if(card.word){
-            await playWav(card.word);
+
+            await speakText(card.word);
+
         }
-    }
-             speechSynthesis.cancel();
-            await playWav(card.phonics);
-            
-            
+
     }catch(err){
 
-            console.log(err);
-
-        }
+        console.log(err);
 
     }
-    
-    await speakText(card.word);
 
     showNextButton();
 
     playing = false;
+
 }
+            
 
 
 letterImage.addEventListener(
