@@ -417,7 +417,7 @@ function speakText(text){
         const utter =
         new SpeechSynthesisUtterance(text);
 
-        utter.lang = "en-GB";
+        utter.lang = "en-US";
         utter.rate = 0.8;
 
         utter.onend = ()=>resolve();
@@ -482,7 +482,7 @@ async function playFallback(card){
 function playWav(file){
 
     return new Promise((resolve,reject)=>{
-       // const audio = new Audio(file);
+       
         audio = new Audio(file);
 
         audio.onended = ()=>resolve();
