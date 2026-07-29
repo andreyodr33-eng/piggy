@@ -409,43 +409,25 @@ function showNextButton(){
     nextBtn.classList.add("show");
 }
     
+
 function speakText(text){
 
     return new Promise(resolve=>{
 
         const utter =
-            new SpeechSynthesisUtterance(text);
+        new SpeechSynthesisUtterance(text);
 
-        utter.lang = "en-US";
+        utter.lang = "en-GB";
         utter.rate = 0.8;
 
-        let finished = false;
-
-        const done = ()=>{
-
-            if(finished) return;
-
-            finished = true;
-
-            resolve();
-
-        };
-
-        utter.onend = done;
-
-        utter.onerror = done;
+        utter.onend = ()=>resolve();
 
         speechSynthesis.speak(utter);
-
-        setTimeout(done,3000);
 
     });
 
 }
 
-
-
-        
 function speakFallback(card){
   return new Promise(resolve=>{
     const sound1 =
