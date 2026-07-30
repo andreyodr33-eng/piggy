@@ -137,7 +137,17 @@ body{
     color:#1976d2;
 
 } 
-   
+ #prevBtn{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+}
+
+#nextBtn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+}  
 
 </style>
 
@@ -187,6 +197,17 @@ body{
 
          </div>
   </div>
+    <div class="nav-panel">
+
+    <button id="prevBtn">
+        ◀
+    </button>
+
+    <button id="nextBtn">
+        ▶
+    </button>
+
+</div>
 <script>
 
 const cards = [
