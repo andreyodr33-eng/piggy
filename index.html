@@ -425,7 +425,6 @@ function prevCard(){
     loadCard();
 
 }   
-
 function speakText(text){
 
     return new Promise(resolve=>{
@@ -436,9 +435,40 @@ function speakText(text){
         utter.lang = "en-US";
         utter.rate = 0.8;
 
-        utter.onend = ()=>resolve();
+        const voices =
+        speechSynthesis.getVoices();
 
-        speechSynthesis.speak(utter);
+        const englishVoice =
+
+            voices.find(v =>
+                v.name === "Samantha"
+            )
+
+            ||
+
+            voices.find(v =>
+                v.name === "Daniel"
+            )
+
+            ||
+
+            voices.find(v =>
+                v.lang.includes("en")
+            );
+
+        if(englishVoice){
+
+            utter.voice =
+            englishVoice;
+
+        }
+
+        utter.onend = ()=>
+            resolve();
+
+        speechSynthesis.speak(
+            utter
+        );
 
     });
 
