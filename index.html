@@ -404,7 +404,7 @@ function loadCard(){
     letterImage.src = card.letterImage;
     iconImage.src = card.image;
 
-    nextBtn.classList.remove("show");
+   // nextBtn.classList.remove("show");
 
     stopAllAudio();
 }
@@ -432,10 +432,7 @@ function stopAllAudio(){
     playing = false;
 }
 
-function showNextButton(){
 
-    nextBtn.classList.add("show");
-}
  function nextCard(){
 
     current++;
@@ -600,7 +597,7 @@ document.addEventListener(
 
     }
 
-    showNextButton();
+   // showNextButton();
 
     playing = false;
 
