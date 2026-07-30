@@ -434,7 +434,37 @@ function showNextButton(){
 
     nextBtn.classList.add("show");
 }
-    
+ function nextCard(){
+
+    current++;
+
+    if(current >= cards.length){
+
+        current = 0;
+
+    }
+
+    saveProgress();
+
+    loadCard();
+
+}
+
+function prevCard(){
+
+    current--;
+
+    if(current < 0){
+
+        current = cards.length - 1;
+
+    }
+
+    saveProgress();
+
+    loadCard();
+
+}   
 
 function speakText(text){
 
