@@ -539,7 +539,22 @@ const nextBtn =
 document.getElementById("nextBtn");
 const prevBtn =
 document.getElementById("prevBtn");
+function preloadNextCards(){
 
+    for(let i = 1; i <= 3; i++){
+
+        const next =
+        cards[(current + i) % cards.length];
+
+        const img1 = new Image();
+        img1.src = next.letterImage;
+
+        const img2 = new Image();
+        img2.src = next.image;
+
+    }
+
+}
 function loadCard(){
 
     const card = cards[current];
@@ -547,7 +562,7 @@ function loadCard(){
     letterImage.src = card.letterImage;
     iconImage.src = card.image;
 
-
+   preloadNextCards();
 
     stopAllAudio();
 }
