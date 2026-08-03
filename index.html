@@ -681,17 +681,17 @@ document.addEventListener(
 
     const card = cards[current];
 
-    try{
+     try{
          
-        if(card.phonics){
+        if(card.letter){
 
-            await playWav(card.phonics);
+            await playPhonic(card.letter);
 
           await new Promise(resolve =>
                 setTimeout(resolve, 100)
             );  
 
-            await playWav(card.phonics);
+            await playPhonic(card.letter);
 
         }
           if(card.word){
@@ -699,6 +699,7 @@ document.addEventListener(
               await speakText(card.word);
 
         }
+
        
 
     }catch(err){
