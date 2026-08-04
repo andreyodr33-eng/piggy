@@ -641,7 +641,7 @@ function prevCard(){
 
 }   
 function speakText(text){
-  // utter.onerror = () => resolve();
+  
     return new Promise(resolve=>{
 
         const utter =
@@ -786,8 +786,8 @@ document.addEventListener(
           await new Promise(resolve =>
                 setTimeout(resolve, 100)
             );  
-           // console.log("phonics 2");
-           // await playPhonic(card.letter);
+            console.log("phonics 2");
+            await playPhonic(card.letter);
 
         }
           if(card.word){
