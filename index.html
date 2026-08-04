@@ -524,7 +524,7 @@ const phonics = {
 };
 let current =
 Number(localStorage.getItem("currentCard")) || 0;
-let audioCache = {};
+
 let audio = null;
 let playing = false;
 
@@ -573,6 +573,7 @@ function saveProgress(){
         current
     );
 }
+
 function playPhonic(letter){
 
     return new Promise((resolve,reject)=>{
@@ -597,8 +598,7 @@ function playPhonic(letter){
 
     });
 
-}    
-
+}
 
 function stopAllAudio(){
 
