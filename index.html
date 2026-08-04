@@ -524,7 +524,7 @@ const phonics = {
 };
 let current =
 Number(localStorage.getItem("currentCard")) || 0;
-
+let audioCache = {};
 let audio = null;
 let playing = false;
 
@@ -575,21 +575,29 @@ function saveProgress(){
 }
 function playPhonic(letter){
 
-    return new Promise(resolve=>{
+    return new Promise((resolve,reject)=>{
 
-        const audio =
-        new Audio(
-            phonics[letter]
-        );
+        if(!audioCache[letter]){
 
-        audio.onended =
-            ()=>resolve();
+            audioCache[letter] =
+                new Audio(phonics[letter]);
 
-        audio.play();
+        }
+
+        const a =
+            audioCache[letter];
+
+        a.pause();
+        a.currentTime = 0;
+
+        a.onended = resolve;
+        a.onerror = reject;
+
+        a.play().catch(reject);
 
     });
 
-}
+}    
 
 
 function stopAllAudio(){
