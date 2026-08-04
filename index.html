@@ -574,21 +574,23 @@ function saveProgress(){
     );
 }
 function playPhonic(letter){
-   if(!phonics[letter]){ 
-      return Promise.resolve();
-   }    
-      return new Promise((resolve,reject)=>{
 
-        const audio = new Audio(phonics[letter]);
+    return new Promise(resolve=>{
 
-        audio.onended = resolve;
+        const audio =
+        new Audio(
+            phonics[letter]
+        );
 
-        audio.onerror = reject;
+        audio.onended =
+            ()=>resolve();
 
-        audio.play().catch(reject);
+        audio.play();
 
     });
+
 }
+
 
 function stopAllAudio(){
 
