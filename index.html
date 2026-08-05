@@ -786,10 +786,8 @@ document.addEventListener(
           await new Promise(resolve =>
                 setTimeout(resolve, 100)
             );  
-           // console.log("phonics 2");
-           // await playPhonic(card.letter);
-
-        }
+           
+         }
           if(card.word){
             console.log("word");
               await speakText(card.word);
@@ -804,14 +802,10 @@ document.addEventListener(
 
     }
 
-   
-
     playing = false;
 
 }
             
-
-
 letterImage.addEventListener(
     "pointerup",
     playCard
@@ -830,10 +824,9 @@ nextBtn.addEventListener(
     "click",
     nextCard
 );    
-    
-//});
 loadCard();  
-//ЗАСТАВКА    
+
+    //ЗАСТАВКА    
 window.addEventListener(
     "load",
     ()=>{
