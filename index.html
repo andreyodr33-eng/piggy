@@ -793,7 +793,8 @@ document.addEventListener(
           await new Promise(resolve =>
                 setTimeout(resolve, 100)
             );  
-           
+          await playPhonic(card.letter);
+ 
          }
           if(card.word){
             console.log("word");
