@@ -522,6 +522,16 @@ const phonics = {
     er:"sounds/er.wav",
     ar:"sounds/ar.wav"
 };
+cards.forEach(card=>{
+
+    const img1 = new Image();
+    img1.src = card.letterImage;
+
+    const img2 = new Image();
+    img2.src = card.image;
+
+});
+    
 let current =
 Number(localStorage.getItem("currentCard")) || 0;
 
@@ -561,7 +571,7 @@ function loadCard(){
     letterImage.src = card.letterImage;
     iconImage.src = card.image;
 
-   preloadNextCards();
+  // preloadNextCards();
 
     stopAllAudio();
 }
