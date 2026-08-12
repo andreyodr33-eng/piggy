@@ -526,8 +526,7 @@ const phonicAudio = {};
 Object.keys(phonics).forEach(letter=>{
     phonicAudio[letter] =
         new Audio(phonics[letter]);
-   phonicAudio[letter].preload =
-       "auto";
+   
 });    
 let current =
 Number(localStorage.getItem("currentCard")) || 0;
