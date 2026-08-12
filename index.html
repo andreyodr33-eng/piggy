@@ -526,6 +526,8 @@ const phonicAudio = {};
 Object.keys(phonics).forEach(letter=>{
     phonicAudio[letter] =
        new Audio(phonics[letter]);
+    phonicAudio[letter].preload =
+        "auto";
 }); 
     
 let current =
@@ -586,7 +588,7 @@ function playPhonic(letter){
 
         const audio =
             phonicAudio[letter];
-
+        audio.pause();
         audio.currentTime = 0;
 
         audio.onended =
