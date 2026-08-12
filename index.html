@@ -526,6 +526,8 @@ const phonicAudio = {};
 Object.keys(phonics).forEach(letter=>{
     phonicAudio[letter] =
         new Audio(phonics[letter]);
+   phonicAudio[letter].preload =
+       "auto";
 });    
 let current =
 Number(localStorage.getItem("currentCard")) || 0;
@@ -586,8 +588,6 @@ function playPhonic(letter){
         const audio =
             phonicAudio[letter];
 
-        audio.pause();
-
         audio.currentTime = 0;
 
         audio.onended =
@@ -597,7 +597,7 @@ function playPhonic(letter){
             ()=>resolve();
 
         audio.play()
-             .catch(()=>resolve());
+             .catch(resolve);
 
     });
 
