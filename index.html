@@ -175,30 +175,31 @@ body{
 
 const cards = [
 {
-     letter:"s",
+    letter:"s",
+    secondSound: "s",
     letterImage:"letters/S.png",
     image:"icons/icon-S.png",
      word: "sun"
 },
 {
-     letter:"a",
+    letter:"a",
+    secondSound: "a",
     letterImage:"letters/A.png",
     image:"icons/icon-A.png",
-   // phonics:"sounds/a.wav",
     word: "apple"
 },
 {
-     letter:"t",
+    letter:"t",
+    secondSound: "t",
     letterImage:"letters/T.png",
     image:"icons/icon-T.png",
-    //phonics:"sounds/t.wav",
     word: "turtle"
 }, 
 {
-     letter:"i",
+    letter:"i",
+    secondSound: "i",
     letterImage:"letters/I.png",
     image:"icons/icon-I.png",
-    //phonics:"sounds/i.wav",
     word: "ice cream"
 }, 
 {
@@ -804,7 +805,7 @@ document.addEventListener(
           await new Promise(resolve =>
                 setTimeout(resolve,300)
             );  
-          await speakText("a");
+          await speakText(card.secondSound);
  
          }
           if(card.word){
