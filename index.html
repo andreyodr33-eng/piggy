@@ -525,7 +525,7 @@ const phonics = {
 const phonicAudio = {};
 Object.keys(phonics).forEach(letter=>{
     phonicAudio[letter] =
-         Audio(phonics[letter]);
+       new Audio(phonics[letter]);
 }); 
     
 let current =
