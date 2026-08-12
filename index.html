@@ -176,37 +176,32 @@ body{
 const cards = [
 {
     letter:"s",
-    secondSound: "s2",
     letterImage:"letters/S.png",
     image:"icons/icon-S.png",
      word: "sun"
 },
 {
     letter:"a",
-    secondSound: "a2",
     letterImage:"letters/A.png",
     image:"icons/icon-A.png",
     word: "apple"
 },
 {
     letter:"t",
-    secondSound: "t2",
     letterImage:"letters/T.png",
     image:"icons/icon-T.png",
     word: "turtle"
 }, 
 {
     letter:"i",
-    secondSound: "i2",
     letterImage:"letters/I.png",
     image:"icons/icon-I.png",
     word: "ice cream"
 }, 
 {
-     letter:"p",
+    letter:"p",
     letterImage:"letters/P.png",
     image:"icons/icon-P.png",
-   // phonics:"sounds/p.wav",
     word: "pig"
 }, 
 {
@@ -480,13 +475,9 @@ const cards = [
     
 const phonics = {
      s:"sounds/s.wav",
-     s2:"sounds/s2.wav,
      a:"sounds/a.wav",
-     a2:"sounds/a2.wav",
      t:"sounds/t.wav",
-     t2:"sounds/t2.wav",
      i:"sounds/i.wav",
-     i2:"sounds/i2.wav",
      p:"sounds/p.wav",
      n:"sounds/n.wav",
      h:"sounds/h.wav",
@@ -809,7 +800,7 @@ document.addEventListener(
           await new Promise(resolve =>
                 setTimeout(resolve,300)
             );  
-          await playPhonic(card.secondSound);
+          await playPhonic(card.letter);
  
          }
           if(card.word){
