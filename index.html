@@ -584,14 +584,20 @@ function playPhonic(letter){
     return new Promise(resolve=>{
 
         const audio =
-        new Audio(
-            phonics[letter]
-        );
+            phonicAudio[letter];
+
+        audio.pause();
+
+        audio.currentTime = 0;
 
         audio.onended =
             ()=>resolve();
 
-        audio.play();
+        audio.onerror =
+            ()=>resolve();
+
+        audio.play()
+             .catch(()=>resolve());
 
     });
 
