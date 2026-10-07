@@ -1,4 +1,4 @@
-const CACHE_NAME = 'abcphonics-v1';
+const CACHE_NAME = 'abcphonics-v2';
 
 self.addEventListener('install', (event) => {
 
