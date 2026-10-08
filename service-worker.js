@@ -1,44 +1,40 @@
-const CACHE_NAME = "piggy-v1";
+const CACHE_NAME = "abcphonics-v4";
+const CORE_FILES = [ "./", "./index.html", "./manifest.json", "./icons/icon-32.png", "./icons/icon-180.png", "./icons/icon-192.png", "./icons/icon-512.png" ];
 self.addEventListener("install", (event) => {
-self.skipWaiting();
-
 event.waitUntil(
 
     caches.open(CACHE_NAME)
         .then((cache) => {
 
-            return cache.addAll([
-                "./",
-                "./index.html",
-                "./app.js",
-                "./style.css",
-                "./manifest.json"
-            ]);
+            return cache.addAll(CORE_FILES);
 
         })
 
 );
+
+self.skipWaiting();
 });
 self.addEventListener("activate", (event) => {
 event.waitUntil(
 
-    caches.keys().then((keys) => {
+    caches.keys()
+        .then((keys) => {
 
-        return Promise.all(
+            return Promise.all(
 
-            keys.map((key) => {
+                keys.map((key) => {
 
-                if (key !== CACHE_NAME) {
+                    if (key !== CACHE_NAME) {
 
-                    return caches.delete(key);
+                        return caches.delete(key);
 
-                }
+                    }
 
-            })
+                })
 
-        );
+            );
 
-    })
+        })
 
 );
 
@@ -52,29 +48,36 @@ if (event.request.method !== "GET") {
 event.respondWith(
 
     caches.match(event.request)
-        .then((cached) => {
+        .then((cachedResponse) => {
 
-            if (cached) {
-                return cached;
+            if (cachedResponse) {
+                return cachedResponse;
             }
 
             return fetch(event.request)
-                .then((response) => {
+                .then((networkResponse) => {
 
-                    const clone =
-                        response.clone();
+                    if (
+                        networkResponse &&
+                        networkResponse.status === 200
+                    ) {
 
-                    caches.open(CACHE_NAME)
-                        .then((cache) => {
+                        const copy =
+                            networkResponse.clone();
 
-                            cache.put(
-                                event.request,
-                                clone
-                            );
+                        caches.open(CACHE_NAME)
+                            .then((cache) => {
 
-                        });
+                                cache.put(
+                                    event.request,
+                                    copy
+                                );
 
-                    return response;
+                            });
+
+                    }
+
+                    return networkResponse;
 
                 });
 
