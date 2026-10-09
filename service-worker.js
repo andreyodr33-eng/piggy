@@ -12,14 +12,14 @@ const CARD_FILES = [ "S", "A", "T", "I2", "I", "P", "N", "C", "K", "E",
                     "H", "R", "M", "D", "G", "O", "U", "L", "F", "B",
                     "J", "Z", "W", "V", "Y", "X"
                    ].flatMap(name => [
-                       `./letters/${name}.png,` 
+                       `./letters/${name}.png`, 
                        `./icons/icon-${name}.png`
                    ]).concat([ 
                        "ai", "oa", "ie", "ee", "or", "ng", "oo2", "oo",
                        "ch", "sh", "th2", "th", "qu", "ou", "oi", "ue",
                        "er", "ar"
                    ].flatMap(name => [ 
-                       `./letters/${name}.png,` 
+                       `./letters/${name}.png`, 
                        `./icons/icon-${name}.png`
                    ]));
 const SOUND_FILES = [ "s", "a", "t", "i", "p", "n", "h", "c", "k", "e", 
